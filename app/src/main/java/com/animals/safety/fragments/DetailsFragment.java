@@ -40,6 +40,9 @@ public class DetailsFragment extends Fragment {
         binding.textViewWeight.setText(getString(R.string.value_weight, String.valueOf(getAnimal().getWeight())));
         binding.textViewHeight.setText(getString(R.string.value_height, String.valueOf(getAnimal().getHeight())));
         toFill();
+    }
+
+    private void toFill() {
         binding.fabDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,16 +58,14 @@ public class DetailsFragment extends Fragment {
         });
     }
 
-    private void toFill() {
-        //TODO : à completer
-    }
-
+    // Création de la fonctionnalité de suppression d'animaux
     private void deleteAnimal() {
         Animal currentAnimal = getAnimal();
         AnimalData.removeAnimal(currentAnimal);
         back();
     }
 
+    // Création de la fonctionnalité qui va naviguer vers l'écran de modification fragment_create
     private void navigateToEdition() {
         Bundle bundle = new Bundle();
         bundle.putSerializable(DetailsFragment.KEY_ANIMAL, getAnimal());
